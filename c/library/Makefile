@@ -1,17 +1,18 @@
-NAME		= lib/libclery.so
+CC		= gcc
+
+CFLAGS	= -std=c99
+
+NAME		= lib/libclery.a
 
 SRC		= src/array.c
 
 OBJ		= $(SRC:.c=.o)
 
-CFLAGS	= -std=c99 -fPIC
+all:		$(NAME)
+		
 
-CC		= gcc
-
-$(NAME):	all
-
-all:		$(OBJ)
-		$(CC) -shared $(CFLAGS) -o $(NAME) $(OBJ)
+$(NAME):	$(OBJ)
+		ar rc $@ $^
 
 clean:
 	rm -f $(OBJ)

@@ -1,9 +1,7 @@
 CC		= gcc
 
 CFLAGS	= -std=c99
-CFLAGS	+= -I$(LIBRARY)/include -L$(LIBRARY)/lib
-
-LDFLAGS	= -lclery
+CFLAGS	+= -I$(LIBRARY)/include
 
 NAME		= search
 
@@ -19,7 +17,7 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 		make -C $(LIBRARY)
 		make -C $(LIBRARY) clean
-		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LDFLAGS)
+		$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS) $(LIBRARY)/lib/libclery.a
 
 clean:
 	make -C $(LIBRARY) clean

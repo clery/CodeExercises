@@ -4,14 +4,16 @@
 
 extern int verbose_flag;
 
-int binary_search(int *array, size_t size, int n) {
+int binary_search(int *array, size_t size, int n)
+{
   int res;
   int *tmp = array;
   size_t size_mod;
   static size_t i = 0;
 
   i++;
-  if (verbose_flag) {
+  if (verbose_flag)
+  {
     printf("Iteration %zu\n", i);
     printf("Array has a size of %zu\n", size);
     display_array(array, size);
@@ -21,9 +23,11 @@ int binary_search(int *array, size_t size, int n) {
     res = size / 2;
   else if (size <= 1)
     res = -1;
-  else {
+  else
+  {
     size_mod = 0;
-    if (n > array[size / 2]) {
+    if (n > array[size / 2])
+    {
       tmp += size / 2 + 1;
       size_mod = (size % 2 ? 0 : 1);
     }
